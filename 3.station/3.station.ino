@@ -1,7 +1,7 @@
 #include <ESP8266WiFi.h>
  
-const char *ssid = "SmartCR";
-const char *password = "smartcrcr";
+const char *ssid = "dxwy";
+const char *password = "dxwydxwy";
                                             
 void setup() {
   Serial.begin(9600);
@@ -22,5 +22,5 @@ void setup() {
   Serial.println(WiFi.localIP());              // WiFi.localIP()函数来实现的。该函数的返回值即NodeMCU的IP地址。
 }
  
-void loop() {                      
+void loop() {                                   
 }
