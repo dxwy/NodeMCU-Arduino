@@ -1,9 +1,10 @@
+#include <Arduino.h>     //这个就不解释了
 #include <ESP8266WiFi.h>
 #include <ESP8266WiFiMulti.h>
 #include <ESP8266WebServer.h>
 #include <FS.h>  
 
-ESP8266WiFiMulti wifiMulti;     // 建立ESP8266WiFiMulti对象
+ESP8266WiFiMulti wifiMulti;             // 建立ESP8266WiFiMulti对象
 ESP8266WebServer esp8266_server(80);    // 建立网络服务器对象，该对象用于响应HTTP请求。监听端口（80）
 
 const char *ssid = "dxwy";
@@ -55,12 +56,15 @@ void handleUserRequet() {
 
   // 如果在SPIFFS无法找到用户访问的资源，则回复404 (Not Found)
   if (!fileReadOK){                                                 
-    esp8266_server.send(404, "text/plain", "404 Not Found"); 
+    esp8266_server.send(404, "text/plain", "404 Not Found");
   }
 }
 
 bool handleFileRead(String path) {            //处理浏览器HTTP访问
 
+  Serial.print("webAddress:");
+  Serial.println(path);
+  
   if (path.endsWith("/")) {                   // 如果访问地址以"/"为结尾
     path = "/index.html";                     // 则将访问地址修改为/index.html便于SPIFFS访问
   } 
